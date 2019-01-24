@@ -31,6 +31,11 @@
 [~/vagrant-ruby]$ vagrant halt
 ```
 
+#### 削除
+```
+[~/vagrant-ruby]$ vagrant destroy
+```
+
 #### ログイン
 ```
 [~/vagrant-ruby]$ vagrant ssh
