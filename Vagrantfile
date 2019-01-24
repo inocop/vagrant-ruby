@@ -19,15 +19,20 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", inline: <<-SHELL
     sudo su
+    sed -i -e "s|secure_path = /sbin:/bin:/usr/sbin:/usr/bin|secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin|g" /etc/sudoers
+
     cd /tmp
-    yum -y install wget gcc zlib-devel openssl-devel readline-devel libffi-devel
+    yum -y install epel-release
+    yum -y install wget gcc zlib-devel openssl-devel readline-devel libffi-devel libxml2-devel libxslt-devel sqlite-devel
     wget https://cache.ruby-lang.org/pub/ruby/2.5/ruby-2.5.3.tar.gz
     tar zxvf ruby-2.5.3.tar.gz
     cd ruby-2.5.3
     ./configure --disable-install-rdoc
     make
     make install
-    ln -s /usr/local/bin/ruby /usr/bin/ruby
+    
+    gem install --no-document nokogiri -- --use-system-libraries
+    gem install rails --no-document
   SHELL
 
 end
