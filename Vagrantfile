@@ -20,7 +20,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     sudo su
     cd /tmp
-    yum -y install wegt gcc zlib-devel openssl-devel readline-devel libffi-devel
+    yum -y install wget gcc zlib-devel openssl-devel readline-devel libffi-devel
     wget https://cache.ruby-lang.org/pub/ruby/2.5/ruby-2.5.3.tar.gz
     tar zxvf ruby-2.5.3.tar.gz
     cd ruby-2.5.3
