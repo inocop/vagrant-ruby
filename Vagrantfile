@@ -3,14 +3,20 @@
 
 Vagrant.configure("2") do |config|
 
-  config.vm.box_url = "https://app.vagrantup.com/centos/boxes/7"
-  config.vm.box = "centos/7"
-  config.vm.box_version = "1812.01"
+  ### synced_folder type: rsync for mac
+  #config.vm.box_url = "https://app.vagrantup.com/centos/boxes/7"
+  #config.vm.box = "centos/7"
+  #config.vm.box_version = "1812.01"
+  #config.vm.synced_folder "./source", "/vagrant", type: "rsync"
+
+  ### synced_folder type: vboxsf(Guest Additions) for windows
+  config.vm.box_url = "https://app.vagrantup.com/bento/boxes/centos-7"
+  config.vm.box = "bento/centos-7"
+  config.vm.box_version = "201812.27.0"
+  config.vm.synced_folder "./source", "/vagrant", type: "virtualbox"
 
   config.vm.network "private_network", ip: "192.168.33.11"
   config.vm.network :forwarded_port,   guest: 3000, host: 3000
-
-  config.vm.synced_folder "./source", "/vagrant", type: "virtualbox"
 
   config.vm.provider "virtualbox" do |vb|
     # Customize the amount of memory on the VM:
