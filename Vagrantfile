@@ -28,9 +28,11 @@ Vagrant.configure("2") do |config|
     sed -i -e "s|secure_path = /sbin:/bin:/usr/sbin:/usr/bin|&:/usr/local/bin|g" /etc/sudoers
     export PATH=$PATH:/usr/local/bin
 
+    curl --silent --location https://rpm.nodesource.com/setup_8.x | bash -
+
     cd /tmp
     yum -y install epel-release
-    yum -y install wget gcc zlib-devel openssl-devel readline-devel libffi-devel libxml2-devel libxslt-devel sqlite-devel
+    yum -y install wget gcc zlib-devel openssl-devel readline-devel libffi-devel libxml2-devel libxslt-devel sqlite-devel nodejs
     wget https://cache.ruby-lang.org/pub/ruby/2.5/ruby-2.5.3.tar.gz
     tar zxvf ruby-2.5.3.tar.gz
     cd ruby-2.5.3
