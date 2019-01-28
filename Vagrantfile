@@ -38,8 +38,8 @@ Vagrant.configure("2") do |config|
     make
     make install
     
-    gem install --no-document nokogiri -- --use-system-libraries
-    gem install rails --no-document
+    gem install --no-document nokogiri -v "~> 1.10.1" -- --use-system-libraries
+    gem install --no-document rails    -v "~> 5.2.2"
   SHELL
 
 end
