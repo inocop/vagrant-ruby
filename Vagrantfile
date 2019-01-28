@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", inline: <<-SHELL
     sudo su
-    sed -i -e "s|secure_path = /sbin:/bin:/usr/sbin:/usr/bin|secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin|g" /etc/sudoers
+    sed -i -e "s|secure_path = /sbin:/bin:/usr/sbin:/usr/bin|&:/usr/local/bin|g" /etc/sudoers
     export PATH=$PATH:/usr/local/bin
 
     cd /tmp
